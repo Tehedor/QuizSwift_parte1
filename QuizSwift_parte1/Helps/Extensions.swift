@@ -12,8 +12,8 @@ infix operator =+-= : ComparisonPrecedence
 
 extension String {
     static func =+-= (s1:String, s2:String) -> Bool {
-        var a = s1.lowercased().trimmingCharacters(in:.whitespaces)
-        var b = s2.lowercased().trimmingCharacters(in:.whitespaces)
+        let a = s1.lowercased().trimmingCharacters(in:.whitespaces)
+        let b = s2.lowercased().trimmingCharacters(in:.whitespaces)
         return a == b
     }
 }

@@ -15,9 +15,11 @@ struct QuizSwift_parte1App: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            
+            QuizListView()
                 .environment(quizzesModel)
                 .environment(scoresModel)
         }
     }
 }
+
