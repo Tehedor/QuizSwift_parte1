@@ -30,6 +30,7 @@ struct QuizItemPlayView: View {
             titulo
             if  verticalSizeClass == .compact {
                 HStack(spacing:10) {
+                    adjunto
                     VStack{
                         Spacer()
                         pregunta
@@ -41,7 +42,6 @@ struct QuizItemPlayView: View {
                             autor
                         }
                     }
-                    adjunto
                 }
             }else {
                 VStack {
