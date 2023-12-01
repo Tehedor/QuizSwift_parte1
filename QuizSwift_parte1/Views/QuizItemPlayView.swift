@@ -59,7 +59,7 @@ struct QuizItemPlayView: View {
             }
         }
         .padding()
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.inline) // da error pero con el error queda huapo
         .toolbar {
             ToolbarItem(placement: .principal) {
                 HStack{
@@ -68,24 +68,22 @@ struct QuizItemPlayView: View {
                         //.font(.headline)
                         .foregroundStyle(.black)
                         //.fontWidth(.expanded)
-                        .font(.system(size: 30))
+                        .font(.system(size: 40))
                         .bold()
                         //.frame(width: 200, height: 50, alignment: .center)
                     Spacer()
                 }
-                .scaledToFit()
-                .background(Color.cPrincipal)
                 
             }
-        }        .background(Color.cFou2)
+        }        .background(Color.cPrincipal)
     }
 
 
     private var puntos: some View {
-        Text("Puntos: \(scoresModel.acertadas.count)")
+        Text("Score: \(scoresModel.acertadas.count)")
             .font(.title)
             .fontWeight(.bold)
-            .foregroundStyle(.pink)
+            .foregroundStyle(Color.gray)
     }
 
 
@@ -99,12 +97,14 @@ struct QuizItemPlayView: View {
                    }
                    // .keyboardType(.numberPad)
 
-               Button("Comprobar") {
+               Button("Check") {
 
                    // answer =+-= quizItem.answer
                   showCheckAlert = true
                   scoresModel.check(quizItem: quizItem, answer: answer)
+
                }
+               .padding()
            }
            .alert("Resultado" ,isPresented: $showCheckAlert) {
                // Si no pones un botton te pone uno por defecto con ok dentro
@@ -159,9 +159,9 @@ struct QuizItemPlayView: View {
                 .clipShape(Circle())
                 .overlay{
                     Circle()
-                        .stroke(Color.blue, lineWidth: 2)
+                        .stroke(Color.gray, lineWidth: 2)
                     }
-                .shadow(color: .blue, radius: 5, x: 0.0, y: 0.0)
+                .shadow(color: .black, radius: 5, x: 0.0, y: 0.0)
                    // Poner la imagen a la derecha
            }
        }

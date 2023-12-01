@@ -38,7 +38,7 @@ struct QuizItemRowView: View {
                             .shadow(color: .black, radius: 5, x: 0.0, y: 0.0)
                             //.resizable()
                             .scaledToFit()
-
+                            .padding()
                             //.scaleEffect(2.0)
                         
                         EasyAsyncImage(url: quizItem.author?.photo?.url)
@@ -54,7 +54,6 @@ struct QuizItemRowView: View {
                             .frame(width: 90, height: 90, alignment: .bottomTrailing )
                         
                     }
-Spacer()
                     Text(quizItem.question)
                         .lineLimit(3) //puede que este mal
                         .font( .system(size: 18))

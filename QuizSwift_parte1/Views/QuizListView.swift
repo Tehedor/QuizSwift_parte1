@@ -17,45 +17,41 @@ struct QuizListView: View {
     //@Environment (ScoresModel.self) var scoresModel
     // @Environment (QuizzesModel.self) var quizzesModel: QuizzesModel
 
-
-
     var body: some View {
         
         NavigationStack{
-            //ZStack(alignment: center) {
                 
-            
-            List {
-                ForEach(quizzesModel.quizzes){quizItem in
-                    NavigationLink {
-                        QuizItemPlayView(quizItem: quizItem)
-                    } label: {
-                        QuizItemRowView(quizItem: quizItem)
-                        
+                List {
+                    ForEach(quizzesModel.quizzes){quizItem in
+                        NavigationLink {
+                            QuizItemPlayView(quizItem: quizItem)
+                        } label: {
+                            QuizItemRowView(quizItem: quizItem)
+                            
+                        }
                     }
+                    .listRowBackground(Color.cPrincipal)
+                    .foregroundColor(.black)
+                    //.listRowSeparator(.automatic)
+                    
                 }
-                .listRowBackground(Color.cFou2)
-                .foregroundColor(.black)
-                //.listRowSeparator(.automatic)
-
-            }
+            
             //.foregroundColor(.green)
             //.foregroundColor(.cLetras)
             
             .listStyle(.plain)
-            .background(Color.black) // Fondo gris para la lista
             .navigationBarTitleDisplayMode(.inline)
+            .background(Color.cFou2)
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     HStack{
                         Spacer()
                         Text("Practica 4 Quizzes")
                             //.font(.headline)
-                            .foregroundStyle(.white)
                             //.fontWidth(.expanded)
-                            .font(.system(size: 40))
+                            .font(.system(size: 35))
                             .bold()
-                            //.frame(width: 200, height: 50, alignment: .center)
+                        //.frame(width: 200, height: 50, alignment: .center)
                         Spacer()
                     }
                 }
@@ -66,12 +62,11 @@ struct QuizListView: View {
         
             
         }
-
-        //.foregroundColor(.green)
         .onAppear ( perform: {
             guard quizzesModel.quizzes.count == 0 else {return}
             quizzesModel.load()
         })
+        .background(Color.green)
         //.background(Color.cFou.edgesIgnoringSafeArea(.all))
         //.padding()
         
