@@ -18,9 +18,13 @@ struct QuizListView: View {
     // @Environment (QuizzesModel.self) var quizzesModel: QuizzesModel
 
 
+
     var body: some View {
         
         NavigationStack{
+            //ZStack(alignment: center) {
+                
+            
             List {
                 ForEach(quizzesModel.quizzes){quizItem in
                     NavigationLink {
@@ -30,25 +34,49 @@ struct QuizListView: View {
                         
                     }
                 }
+                .listRowBackground(Color.cFou2)
+                .foregroundColor(.black)
+                //.listRowSeparator(.automatic)
+
             }
-            .foregroundColor(.green)
-            .foregroundColor(.cLetras)
+            //.foregroundColor(.green)
+            //.foregroundColor(.cLetras)
             
-            .background(Color.cFou.edgesIgnoringSafeArea(.all))
             .listStyle(.plain)
-            .navigationTitle("Practica 4 Quizzes")
-            
+            .background(Color.black) // Fondo gris para la lista
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    HStack{
+                        Spacer()
+                        Text("Practica 4 Quizzes")
+                            //.font(.headline)
+                            .foregroundStyle(.white)
+                            //.fontWidth(.expanded)
+                            .font(.system(size: 40))
+                            .bold()
+                            //.frame(width: 200, height: 50, alignment: .center)
+                        Spacer()
+                    }
+                }
+            }
+
+            //.navigationBarTitle(Text("Today's Flavors", displayMode: .inline))
+
+        
             
         }
-        .foregroundColor(.green)
+
+        //.foregroundColor(.green)
         .onAppear ( perform: {
             guard quizzesModel.quizzes.count == 0 else {return}
             quizzesModel.load()
         })
-        .background(Color.cFou.edgesIgnoringSafeArea(.all))
+        //.background(Color.cFou.edgesIgnoringSafeArea(.all))
         //.padding()
         
     }
+    
         
        //& .colorMultiply(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
 }
@@ -59,8 +87,8 @@ struct QuizListView: View {
 
 #Preview {
     
-    var quizzesModel = QuizzesModel()
-    var scoresModel = ScoresModel()
+    let quizzesModel = QuizzesModel()
+    let scoresModel = ScoresModel()
 
     // return QuizzItemPlayView(quizItem: model.quizzes[0])
     return

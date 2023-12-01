@@ -59,7 +59,25 @@ struct QuizItemPlayView: View {
             }
         }
         .padding()
-        .navigationTitle("Play Quiz")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                HStack{
+                    Spacer()
+                    Text("Play Quiz")
+                        //.font(.headline)
+                        .foregroundStyle(.black)
+                        //.fontWidth(.expanded)
+                        .font(.system(size: 30))
+                        .bold()
+                        //.frame(width: 200, height: 50, alignment: .center)
+                    Spacer()
+                }
+                .scaledToFit()
+                .background(Color.cPrincipal)
+                
+            }
+        }        .background(Color.cFou2)
     }
 
 
@@ -102,7 +120,7 @@ struct QuizItemPlayView: View {
                    .font(.title)
                    .fontWeight(.bold)
                Spacer()
-               Image(quizItem.favourite ? "star_yellow" : "star_gray")
+               Image(quizItem.favourite ? "star_yellow" : "estrella_blanca")
                    .resizable()
                    .frame(width: 20, height: 20)
            }
@@ -123,9 +141,9 @@ struct QuizItemPlayView: View {
                    .contentShape(RoundedRectangle(cornerRadius: 10)) // Para que se pueda en el boton y no se solape la imagen
                    .overlay{
                        RoundedRectangle(cornerRadius: 10)
-                           .stroke(Color.blue, lineWidth: 2)
+                           .stroke(Color.cPrincipal, lineWidth: 2)
                    }
-                   .shadow(color: .blue, radius: 5, x: 0.0, y: 0.0)
+                   .shadow(color: .black, radius: 5, x: 0.0, y: 0.0)
            }
        }
     private var autor: some View {
